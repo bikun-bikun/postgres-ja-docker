@@ -3,14 +3,14 @@ services:
   db:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./build/docker/postgres/Dockerfile
       args:
         - DB_LANG=ja_JP
     ports:
       - "5432:5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-      - ./initdb:/docker-entrypoint-initdb.d
+      - ./build/docker/postgres/initdb:/docker-entrypoint-initdb.d
     environment: 
       - POSTGRES_USER
       - POSTGRES_PASSWORD
